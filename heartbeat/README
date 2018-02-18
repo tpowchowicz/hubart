@@ -1,0 +1,15 @@
+1) Install node.js & thrift compiler
+sudo apt-get install nodejs
+sudo apt-get install thrift-compiler
+2) Create ./thrift/Heartbeat.thrift
+service Heartbeat {
+string ping();
+}
+3) Generate Heartbeat.thrift to gen-nodejs directory
+	thrift --gen js:node ./thrift/Heartbeat.thrift
+4) Install npm thrift module (locally or globaly -g)
+	npm install thrift
+5) Create files ./src_nodejs/server.js and ./src_nodejs/client.js
+6) Run the server and the client.
+node ./src_nodejs/server.js
+node ./src_nodejs/client.js

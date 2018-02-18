@@ -1,0 +1,3 @@
+service Heartbeat {
+    string ping();
+}
