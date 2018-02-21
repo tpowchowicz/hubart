@@ -2,6 +2,12 @@
 var thrift = require('thrift');
 var Worker = require('../gen-nodejs/Worker.js');
 var ttypes = require('../gen-nodejs/Worker_types.js');
+
+var connection = thrift.createConnection('localhost', 9090, {
+  transport: thrift.TBufferedTransport,
+  protocol: thrift.TBinaryProtocol,
+});
+
 var client = thrift.createClient(Worker, connection);
 
 var ENCYPTED_MESSAGE = 'kbcwfxgutniyckfsbberfxioagdfomclihhugqbpixptsjvaiqqihlc';
@@ -72,10 +78,7 @@ function calc(workerId) {
   });
 }
 
-var connection = thrift.createConnection('localhost', 9090, {
-  transport: thrift.TBufferedTransport,
-  protocol: thrift.TBinaryProtocol,
-});
+
 
 connection.on('error', function (err) {
   console.log('Connection error.');
